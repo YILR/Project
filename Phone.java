@@ -78,15 +78,5 @@ class Phone {
 
     }
 
-   /* public void key(){
-        List<Map.Entry<String, Long>> entries = new ArrayList<>(book.entrySet());
-
-        Collections.sort(entries, new Sort());
-
-        book.clear();
-        for(Map.Entry<String, Long> entry : entries){
-            book.put(entry.getKey(), entry.getValue());
-        }
-    }*/
 
 }
