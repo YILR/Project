@@ -6,8 +6,8 @@ public class Find {
     public static void main(String[] args) {
         Phone phone = new Phone();
 
-        try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+
             //цикл
             while (true) {
                 System.out.println("Телефонный справочник!\nВыберите опцию:\nДобавить контакт - 1\nПоиск контакта - 2\nУдалить контакт - 3\nВыход - q");
@@ -30,7 +30,6 @@ public class Find {
 
                 System.out.println();
             }
-            reader.close();
 
         } catch (IOException e) {
             System.out.println("Неккоректно введено");

@@ -3,13 +3,16 @@ package Project;
 import java.io.*;
 import java.util.*;
 
-class Phone {
-    private Map<String, Long> book = new TreeMap<>();
+public class Phone {
+    private static Map<String, Long> book = new TreeMap<>();
     private File file = new File("C:/Solution/src/Project/File.txt");
 
-
-    Phone() {
+    public Phone() {
         reading();
+    }
+
+    public Map<String, Long> getBook() {
+        return book;
     }
 
     //чтение файла
@@ -31,7 +34,7 @@ class Phone {
     }
 
     //запись файла
-    private void writing() {
+    private void  writing() {
         try (FileWriter writer = new FileWriter(file, false)) {
 
             for (Map.Entry map : book.entrySet()) {
@@ -43,10 +46,10 @@ class Phone {
     }
 
     //вставка
-    public void insert(String a, String b) {
+    public boolean insert(String a, String b) {
         if (book.containsKey(a)) {
             System.out.println("Контакт с таким именем уже существует!");
-
+            return false;
         } else {
             try {
                 book.put(a, Long.parseLong(b));
@@ -56,6 +59,7 @@ class Phone {
                 System.out.println("Нужно во 2-ю строку вводить числа!");
             }
         }
+        return true;
     }
 
     //поиск
@@ -71,14 +75,14 @@ class Phone {
     }
 
     //удаление
-    public void delete(String s) {
+    public void delete(Object s) {
 
         if (book.containsKey(s)) {
             book.remove(s);
             writing();
-            System.out.println("Контакт удален");
+            System.out.println("Контакт удален " +s);
 
-        } else System.out.println("Контакт с таким именем не существует!");
+        } else System.out.println("Контакт с таким именем не существует!" + s);
 
     }
 }
